@@ -1028,8 +1028,9 @@ DataStream.prototype.failurePosition = 0;
   @param {Object} structDefinition Struct definition object.
   @return {Object} The read struct. Null if failed to read struct.
  */
-DataStream.prototype.readStruct = function(structDefinition) {
-  var struct = {}, t, v, n;
+DataStream.prototype.readStruct = function(structDefinition, struct) {
+  var struct = struct || {};
+  var t, v, n;
   var p = this.position;
   for (var i=0; i<structDefinition.length; i+=2) {
     t = structDefinition[i+1];
